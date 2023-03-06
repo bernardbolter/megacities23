@@ -42,7 +42,7 @@ const Nav = () => {
                     <Instagram />
                 </a>
             </section>
-            <div className={mega.navOpen ? 'background-dark background-dark-open' : 'background-dark'} />
+            <div className={mega.navOpen ? 'nav-background-dark nav-background-dark-open' : 'nav-background-dark'} />
         </div>
     )
 }
