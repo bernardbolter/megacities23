@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useCallback }from 'react'
 
-import { shuffle } from "../helpers";
+import { shuffle } from "../helpers"
 import greetings from '../data/greetings/greetings.json'
 
-import * as styles from '../styles/typewriter.module.scss'
-
-const randomGreetings = shuffle(greetings.greetings)
+const randomGreetings = shuffle(greetings)
 let greetIndex = null
 
 const Typewriter = () => {
@@ -53,7 +51,7 @@ const Typewriter = () => {
     }, [changeGreeting, greetingAnimation])
 
     return (
-        <div className={styles.container}>
+        <div className="type-container">
             <h1>{renderedGreeting}</h1>
             <h2>{language}</h2>
         </div>

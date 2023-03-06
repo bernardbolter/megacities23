@@ -1,9 +1,5 @@
-import React from "react";
-
-import * as styles from '../styles/mega-nav.module.scss'
-
 const MegaNav = () => {
-    <section className={styles.container}>
+    <section className="mega-nav-container">
         <p>Mega Nav</p>
     </section>
 }

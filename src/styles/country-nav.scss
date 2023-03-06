@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-.container {
+.country-container {
     position: absolute;
     left: 230px;
     top: 8px;
@@ -10,7 +10,7 @@
     } 
 }
 
-.header {
+.country-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,11 +42,11 @@
     } 
 }
 
-.list {
+.country-list {
     margin: 7px 0 0 0;
 }
 
-.city {
+.country-city {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

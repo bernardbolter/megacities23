@@ -1,11 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { Img } from "react-image";
-import { useWindowSize } from "../helpers/useWindowSize";
+import { Img } from "react-image"
+import Image from 'next/image'
+import { useWindowSize } from "../helpers/useWindowSize"
 
-import { MegaContext } from "../providers/MegaProvider"
-
-import globe from '../images/globe.gif'
-import * as styles from '../styles/city.module.scss'
+import { MegaContext } from '@/providers/megaProvider'
 
 const City = ({
     megacity,
@@ -19,40 +17,32 @@ const City = ({
 
     return (
         <div 
-            className={styles.container}
-            style={{ curser: megacity.completed ? "pointer" : "default" }}
+            className="city-container"
+            style={{ 
+                curser: megacity.completed ? "pointer" : "default"
+            }}
         >
             <div 
-                className={styles.image}
-                style={{ width: size.width > 768 ? cityWidth : "90%"}}   
+                className="city-image"
+                style={{ 
+                    width: size.width > 768 ? cityWidth : "90%",
+                    height: size.width > 768 ? "auto" : "140vw"
+                }}   
             >
-                <Img
-                    src={`${mega.url}${megacity.slug}/${megacity.slug}_md.jpg`}
+                <Image
+                    src={`${mega.url}${megacity.slug}/${megacity.slug}_lg.jpg`}
                     alt={`${megacity.name} Megacity`}
-                    loader={
-                        <div className={styles.loader}
-                            style={{ width: cityWidth, height: size.height * .95}}
-                        >
-                            <img src={globe} alt="spinning globe loader" />
-                            <p>loading {megacity.name}...</p>
-                        </div>
-                    }
-                    unloader={
-                        <div className={styles.loader}
-                            style={{ width: cityWidth, height: size.height * .95}}
-                        >
-                            <p>{megacity.name} image not loading ...</p>
-                        </div>
-                    }
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
 
-            <div className={styles.infoContainer}
+            <div className="city-infoContainer"
                 style={{ height: size.height > 769 ? cityHeight : "auto" }}
             >
-                <div className={styles.info}>
-                    <div className={styles.header}>
-                        <div className={styles.flag}>
+                <div className="city-info">
+                    <div className="city-header">
+                        <div className="city-flag">
                             <img src={`${mega.url}flags/${megacity.flag}`} alt={`${megacity.country} Flag`} />
                         </div>
                         <h1>{megacity.name}</h1>
@@ -60,7 +50,7 @@ const City = ({
                     {megacity.cities.map(city => {
                         totalPopulation = totalPopulation + parseInt(city.population.replace(/,/g, ''), 10)
                         return (
-                            <div className={styles.cities} key={city.name}>
+                            <div className="city-cities" key={city.name}>
                                 <div>
                                     <h3>{city.name}</h3>
                                     {city.name !== city.englishName ? <h5>{city.englishName}</h5> : null}
@@ -69,18 +59,18 @@ const City = ({
                             </div>
                         )
                     })}
-                    <div className={styles.line} />
-                    <p className={styles.population}>{totalPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                    <div className="city-line" />
+                    <p className="city-population">{totalPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                 </div>
-                <div className={styles.artInfo}>
-                    <div className={styles.artText}>
-                        <p className={styles.artSize}>121cm x 169cm</p>
-                        <div className={styles.artLine} />
-                        <p className={styles.artSize}>48" x 69"</p>
-                        <p className={styles.artYear}>{megacity.year}</p>
+                <div className="city-artInfo">
+                    <div className="city-artText">
+                        <p className="city-artSize">121cm x 169cm</p>
+                        <div className="city-artLine" />
+                        <p className="city-artSize">48" x 69"</p>
+                        <p className="city-artYear">{megacity.year}</p>
                     </div>
                     {megacity.completed === null ? (
-                        <div className={styles.enlarge}>
+                        <div className="city-enlarge">
                             <svg viewBox="0 0 58 59">
                                 <path d="M30.353 14.646H42.28L25.789 31.136H0.0979919V33.591V43.413V51.6V58.4H6.89899H15.085H24.907H27.36V34.373L44.685 17.051V28.979H48.085V11.246H30.353V14.646ZM23.959 55H15.084H6.89799H3.49799V51.6V43.414V34.537H23.959V55Z" />
                                 <path d="M42.914 55H33.092V58.4H42.914V55Z" />
@@ -97,19 +87,14 @@ const City = ({
                         </div>
                     ) : (
                         <div 
-                            className={styles.warning}
+                            className="city-warning"
                             onClick={() => {
                                 setViewUnfinished(!viewUnfinished)
-                            }}
-                            onKeyDown={(ev) => {
-                                if (ev.keyCode === 13) {
-                                    setViewUnfinished(!viewUnfinished)
-                                   }
                             }}
                             role="button"
                             tabIndex={0}
                         >
-                            <div className={styles.warningText}>
+                            <div className="city-warningText">
                                 <svg viewBox="0 0 61 62">
                                     <path d="M30.5 22.5524C32.8395 22.5524 34.7361 20.6372 34.7361 18.2747C34.7361 15.9121 32.8395 13.9969 30.5 13.9969C28.1605 13.9969 26.2639 15.9121 26.2639 18.2747C26.2639 20.6372 28.1605 22.5524 30.5 22.5524Z" />
                                     <path d="M34.0244 29.9951V44.0946C34.0244 45.0386 33.6531 45.9439 32.9922 46.6113C32.3312 47.2788 31.4347 47.6538 30.5 47.6538C29.5653 47.6538 28.6688 47.2788 28.0078 46.6113C27.3469 45.9439 26.9756 45.0386 26.9756 44.0946V29.9951C26.9756 29.0512 27.3469 28.1459 28.0078 27.4784C28.6688 26.811 29.5653 26.436 30.5 26.436C31.4347 26.436 32.3312 26.811 32.9922 27.4784C33.6531 28.1459 34.0244 29.0512 34.0244 29.9951V29.9951Z"/>
@@ -119,7 +104,7 @@ const City = ({
                                 <p>Work in Progress</p>
                             </div>
                         {viewUnfinished && (
-                            <div className={styles.unfinished}>
+                            <div className="city-unfinished">
                                 <p>Site is under construction, come back soon to see the full Megacity image</p>
                             </div>
                         )}

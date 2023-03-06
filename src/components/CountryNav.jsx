@@ -1,17 +1,15 @@
 import React, { useState, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MegaContext } from "../providers/MegaProvider"
-
-import * as styles from '../styles/country-nav.module.scss'
+import { MegaContext } from '@/providers/megaProvider'
 
 const CountryNav = ({ setMegaIndex }) => {
     const [mega] = useContext(MegaContext)
     const [showCountryNav, setShowCountryNav] = useState(false)
 
     return (
-        <div className={styles.container}>
+        <div className="country-container">
             <div
-                className={styles.header}
+                className="country-header"
                 onClick={() => setShowCountryNav(!showCountryNav)}
             >
                 <h3>Select Megacity</h3>
@@ -19,7 +17,7 @@ const CountryNav = ({ setMegaIndex }) => {
             <AnimatePresence>
                 {showCountryNav && (
                 <motion.div 
-                    className={styles.list}
+                    className="country-list"
                     animate = {{
                         transition: {
                             staggerChildren: 0.05,
@@ -37,7 +35,7 @@ const CountryNav = ({ setMegaIndex }) => {
                         return (
                             <motion.div
                                 key={index} 
-                                className={styles.city}
+                                className="country-city"
                                 onClick={() => {
                                     setMegaIndex(index)
                                     setShowCountryNav(false)

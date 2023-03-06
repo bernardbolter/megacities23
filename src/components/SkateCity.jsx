@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Img } from 'react-image'
-import { MegaContext } from '../providers/MegaProvider'
+import Image from 'next/image'
+import { MegaContext } from '@/providers/megaProvider'
 import { useWindowSize} from '../helpers/useWindowSize'
-
-import globe from '../images/globe.gif'
-
-import * as styles from '../styles/skate-city.module.scss'
 
 const SkateCity = ({
     skateCity,
@@ -33,14 +29,14 @@ const SkateCity = ({
 
     return (
         <div 
-            className={styles.container}
+            className="skate-container"
             style={{ alignItems: alignCenter ? 'center' : 'flex-start' }}
         >
             <div 
-                className={styles.intro}
+                className="skate-intro"
                 style={{ height: size.height / 2 }}
             >
-                <div className={styles.header}>
+                <div className="skate-header">
                     <svg viewBox="0 0 61 62">
                         <path d="M30.5 22.5524C32.8395 22.5524 34.7361 20.6372 34.7361 18.2747C34.7361 15.9121 32.8395 13.9969 30.5 13.9969C28.1605 13.9969 26.2639 15.9121 26.2639 18.2747C26.2639 20.6372 28.1605 22.5524 30.5 22.5524Z" />
                         <path d="M34.0244 29.9951V44.0946C34.0244 45.0386 33.6531 45.9439 32.9922 46.6113C32.3312 47.2788 31.4347 47.6538 30.5 47.6538C29.5653 47.6538 28.6688 47.2788 28.0078 46.6113C27.3469 45.9439 26.9756 45.0386 26.9756 44.0946V29.9951C26.9756 29.0512 27.3469 28.1459 28.0078 27.4784C28.6688 26.811 29.5653 26.436 30.5 26.436C31.4347 26.436 32.3312 26.811 32.9922 27.4784C33.6531 28.1459 34.0244 29.0512 34.0244 29.9951V29.9951Z"/>
@@ -51,59 +47,38 @@ const SkateCity = ({
                 </div>
                 <p>The <b>Skate City</b> image is the first from another series of satellite composites that stitch together famous skate spots and skate parks from different countries.</p>
                 <p>This first one is from the US and was exhibited at the Circylar Gallery, which is a skateboard focused gallery in Berlin.</p>
-                <p className={styles.quote}>"When you grow up skateboarding, you like them streets and cities"</p>
+                <p className="skate-quote">"When you grow up skateboarding, you like them streets and cities"</p>
             </div>
 
             <div 
-                className={styles.image}
+                className="skate-image"
                 style={{ 
-                    width: size.width > 768 ? cityWidth : "90%"
+                    width: size.width > 768 ? cityWidth : "90%",
+                    height: size.width > 768 ? "88vh" : "140vw"
                 }}
             >
-                <Img
+                <Image
                     src={`${mega.url}/${skateCity.slug}/${skateCity.slug}_md.jpg`}
                     alt={`${skateCity.name}`}
-                    style={{ width: size.width > 768 ? cityWidth : "100%" }}
-                    loader={
-                        <div
-                            className={styles.loader}
-                            style={{
-                                width: cityWidth,
-                                height: size.height * .95
-                            }}
-                        >
-                            <img src={globe} alt="spinning globe loader" />
-                            <p>Loading {skateCity.name}...</p>
-                        </div>
-                    }
-                    unloader={
-                        <div
-                            className={styles.loader}
-                            style={{
-                                width: cityWidth,
-                                height: size.height * .95
-                            }}
-                        >
-                            <p>{skateCity.name} image not loading...</p>
-                        </div>
-                    }
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
 
             <div 
-                className={styles.infoContainer}
+                className="skate-infoContainer"
                 style={{
                     height: cityHeight
                 }}
             >
-                <div className={styles.info}>
-                    <div className={styles.infoHeader}>
-                        <div className={styles.info}>
+                <div className="skate-info">
+                    <div className="skate-infoHeader">
+                        <div className="skate-info">
                             <img src={`${mega.url}/flags/${skateCity.flag}`} alt={`${skateCity.country} Flag`} />
                         </div>
                         <h1>{skateCity.name}</h1>
                     </div>
-                    <div className={styles.spots}>
+                    <div className="skate-spots">
                     {skateCity.spots.map(spot => {
                         return (
                             <p key={spot.name}>
@@ -112,19 +87,19 @@ const SkateCity = ({
                         )
                     })}
                     </div>
-                    <div className={styles.line} />
-                    <p className={styles.allSpots}>{skateCity.spots.length} skate spots</p>
-                    <p className={styles.allCities}>{uniqueCities} cities</p>
-                    <p className={styles.allStates}>{uniqueStates} states</p>
+                    <div className="skate-line" />
+                    <p className="skate-allSpots">{skateCity.spots.length} skate spots</p>
+                    <p className="skate-allCities">{uniqueCities} cities</p>
+                    <p className="skate-allStates">{uniqueStates} states</p>
                 </div>
-                <div className={styles.artInfo}>
-                    <div className={styles.artText}>
-                        <p className={styles.artSize}>121cm x 169cm</p>
-                        <div className={styles.artLine} />
-                        <p className={styles.artSize}>48" x 69"</p>
-                        <p className={styles.artYear}>{skateCity.year}</p>
+                <div className="skate-artInfo">
+                    <div className="skate-artText">
+                        <p className="skate-artSize">121cm x 169cm</p>
+                        <div className="skate-artLine" />
+                        <p className="skate-artSize">48" x 69"</p>
+                        <p className="skate-artYear">{skateCity.year}</p>
                     </div>
-                    {/* <div className={styles.enlarge}>
+                    {/* <div className="skate-enlarge">
                         <svg viewBox="0 0 58 59">
                             <path d="M30.353 14.646H42.28L25.789 31.136H0.0979919V33.591V43.413V51.6V58.4H6.89899H15.085H24.907H27.36V34.373L44.685 17.051V28.979H48.085V11.246H30.353V14.646ZM23.959 55H15.084H6.89799H3.49799V51.6V43.414V34.537H23.959V55Z" />
                             <path d="M42.914 55H33.092V58.4H42.914V55Z" />

@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
+import { MegaContext } from '@/providers/megaProvider'
 import Link from 'next/link'
-import { MegaContext } from '../providers/megaProvider'
-import { MegaContextType, MegaState } from '@/types/megacities'
 
 import Globe from '../svg/Globe'
 import Instagram from '../svg/Instagram'
 import Arrow from '../svg/Arrow'
 
 const Nav = () => {
-    const {mega, setMega} = useContext(MegaContext) as MegaContextType
+    const [mega, setMega] = useContext(MegaContext)
 
     return (
         <div className="navigation-container">

@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-.container {
+.skate-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,11 +14,11 @@
     }
 }
 
-.intro {
+.skate-intro {
     width: 80%;
     background: rgba(255,255,255,.7);
-    margin: 30px 5% 20px;
-    padding: 12px 5% 30px;
+    margin: 30px 4% 20px;
+    padding: 12px 2% 30px;
 
     @media screen and ( min-width: 769px) {
         width: 300px;
@@ -41,7 +41,7 @@
     }
 }
 
-.header {
+.skate-header {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -64,7 +64,7 @@
     }
 }
 
-.quote {
+.skate-quote {
     font-size: 10px;
     font-style: italic;
     font-weight: 200;
@@ -80,9 +80,10 @@
     }
 }
 
-.image {
+.skate-image {
     display: block;
     margin: 2% 5%;
+    position: relative;
 
     @media screen and ( min-width: 769px) {
         margin: 0;
@@ -93,7 +94,7 @@
     }
 }
 
-.loader {
+.skate-loader {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,7 +116,7 @@
     }
 }
 
-.infoContainer {
+.skate-infoContainer {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -133,7 +134,7 @@
     }
 }
 
-.info {
+.skate-info {
     width: 100%;
     box-sizing: border-box;
     padding: 0 0 25px;
@@ -143,7 +144,7 @@
     } 
 }
 
-.infoHeader {
+.skate-infoHeader {
     width: 100%;
     margin: 0 0 7px;
 
@@ -161,7 +162,7 @@
     }
 }
 
-.flag {
+.skate-flag {
     width: 30px;
     opacity: 0.6;
 
@@ -170,7 +171,7 @@
     }
 }
 
-.spots {
+.skate-spots {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -189,7 +190,7 @@
     }
 }
 
-.line {
+.skate-line {
     width: 50%;
     margin: 7px 50% 7px 0;
     height: 1px;
@@ -197,7 +198,7 @@
     opacity: .5; 
 }
 
-.allSpots {
+.skate-allSpots {
     font-size: 9px;
     color: white;
     opacity: .8;
@@ -212,7 +213,7 @@
     }
 }
 
-.allCities {
+.skate-allCities {
     font-size: 8px;
     color: white;
     opacity: .6;
@@ -227,7 +228,7 @@
     }
 }
 
-.allStates {
+.skate-allStates {
     font-size: 7px;
     color: white;
     opacity: .4;
@@ -242,21 +243,21 @@
     }
 }
 
-.artInfo {
+.skate-artInfo {
     margin: 0 0 10px 10px;
     padding: 0;
    
     color: white;
 }
 
-.artText {
+.skate-artText {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.artSize {
+.skate-artSize {
     font-size: 9px;
     font-weight: 500;
     opacity: .4;
@@ -271,7 +272,7 @@
     }  
 }
 
-.artLine {
+.skate-artLine {
     width: 50px;
     height: 1px;
     background: rgba(255,255,255,0.3);
@@ -285,7 +286,7 @@
     }  
 }
 
-.artYear {
+.skate-artYear {
     font-size: 11px;
     font-weight: 500;
     opacity: .8;

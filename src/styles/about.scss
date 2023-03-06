@@ -1,11 +1,11 @@
 @import './vars.scss';
 
-.container {
+.about-container {
     width: 100%;
     background: $photobox;
 }
 
-.line {
+.about-line {
     width: 40%;
     margin: 88px 75% 0 5%;
     height: 1px;
@@ -23,7 +23,7 @@
     }
 }
 
-.content {
+.about-content {
     width: 90%;
     margin: 45px 5%;
 
@@ -171,7 +171,7 @@
     } 
 }
 
-.images {
+.about-images {
     margin: 0 0 3% 10%;
     display: flex;
     flex-direction: row;
@@ -183,7 +183,7 @@
     }
 }
 
-.image {
+.about-image {
     width: 100%;
     height: 0;
     padding-bottom: 100%;

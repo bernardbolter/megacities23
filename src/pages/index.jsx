@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react'
 import { MegaContext } from '@/providers/megaProvider'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Loadable from '@loadable/component'
 import { useWindowSize } from '../helpers/useWindowSize'
 
@@ -11,14 +12,11 @@ import WorldGeo from '../data/world/world.json'
 const Globe = Loadable(() => import('react-globe.gl'))
 
 const IndexPage = () => {
-  const { mega } = useContext(MegaContext)
+  const [mega, setMega] = useContext(MegaContext)
   const [hoverD, setHoverD] = useState('')
   const [allMegas, setAllMegas] = useState([])
   const size = useWindowSize()
-  const globeEl = useRef()
-  const [viewMegacity, setViewMegacity] = useState(false)
-
-//   console.log(mega)
+  const router = useRouter()
 
   useEffect(() => {
     var onlyCities = mega.megacities.filter(mega => mega.slug !== 'skate-city')
@@ -101,7 +99,6 @@ const IndexPage = () => {
         </Link>
         <Nav />
         <Globe
-            ref={globeEl}
             globeImageUrl={'/images/flag-world.jpg'}
             backgroundImageUrl={'/images/night-sky.png'}
             lineHoverPrecision={0}
@@ -137,15 +134,11 @@ const IndexPage = () => {
             }}
             onPolygonHover={p => p !== undefined ? setHoverD(p) : null}
             polygonsTransitionDuration={300}
-            // onPolygonClick={({ slug, cities, size }) => {
-            //     console.log(size)
-            //     // if (size.width > 768) {
-            //     //     setMega(state => ({ ...state, megaIndexSlug: slug }))
-            //     //     navigate("/series/")
-            //     // } else {
-            //     //     console.log(cities)
-            //     // }
-            // }}
+            onPolygonClick={({ slug }) => {
+                console.log(slug)
+                setMega(state => ({ ...state, megaIndexSlug: slug }))
+                router.push('/series')
+            }}
         />
         {(hoverD !== null) && (hoverD) && (size.width > 768) && (
             <div className="index-thumbnail">

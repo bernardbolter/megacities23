@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-.container {
+.city-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,8 +14,9 @@
     }
 }
 
-.image {
+.city-image {
     display: block;
+    position: relative;
 
     @media screen and (min-width: 769px) {
         width: auto;
@@ -31,7 +32,7 @@
     }
 }
 
-.loader {
+.city-loader {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,7 +54,7 @@
     }
 }
 
-.infoContainer {
+.city-infoContainer {
     width: 90%;
     margin: 20px 5%;
     display: flex;
@@ -71,7 +72,7 @@
     }
 }
 
-.info {
+.city-info {
     width: 100%;
     box-sizing: border-box;
     padding: 0;
@@ -81,7 +82,7 @@
     }  
 }
 
-.header {
+.city-header {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -103,12 +104,12 @@
     }
 }
 
-.flag {
+.city-flag {
     width: 25px;
     opacity: 0.6; 
 }
 
-.cities {
+.city-cities {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -160,7 +161,7 @@
     }
 }
 
-.line {
+.city-line {
     margin: 7px 0 7px 80%;
     height: 1px;
     background: $light;
@@ -168,7 +169,7 @@
     width: 20%;
 }
 
-.population {
+.city-population {
     text-align: right;
     color: $light;
     opacity: .8;
@@ -180,7 +181,7 @@
     } 
 }
 
-.enlarge {
+.city-enlarge {
     margin: 20px 0 0 0;
     display: flex;
     flex-direction: row;
@@ -200,7 +201,7 @@
     }
 }
 
-.warning {
+.city-warning {
     margin: 20px 0 0 0;
     display: flex;
     flex-direction: column;
@@ -220,13 +221,13 @@
     }
 }
 
-.warningText {
+.city-warningText {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.unfinished {
+.city-unfinished {
     background: rgba(255,255,255,0.3);
     padding: 10px;
     margin: 20px 0 0 0;
@@ -242,7 +243,7 @@
     }
 }
 
-.artInfo {
+.city-artInfo {
     margin: 0;
     padding: 0;
     color: white;
@@ -257,14 +258,14 @@
     }
 }
 
-.artText {
+.city-artText {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.artSize {
+.city-artSize {
     font-size: 9px;
     font-weight: 500;
     opacity: .4;
@@ -277,7 +278,7 @@
     } 
 }
 
-.artLine {
+.city-artLine {
     width: 50px;
     height: 1px;
     background: rgba(255,255,255,0.3);
@@ -289,7 +290,7 @@
     } 
 }
 
-.artYear {
+.city-artYear {
     font-size: 11px;
     font-weight: 500;
     opacity: .8;
