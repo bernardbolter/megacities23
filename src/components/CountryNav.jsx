@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MegaContext } from '@/providers/megaProvider'
+import Image from 'next/image'
 
 const CountryNav = ({ setMegaIndex }) => {
     const [mega] = useContext(MegaContext)
@@ -50,7 +51,12 @@ const CountryNav = ({ setMegaIndex }) => {
                                     opacity: 0
                                 }}
                             >
-                                <img src={`${mega.url}/flags/${city.flag}`} alt={`${city.country} Flag`} />
+                                <Image 
+                                    src={`${mega.url}/flags/${city.flag}`} 
+                                    alt={`${city.country} Flag`} 
+                                    width={22}
+                                    height={14}    
+                                />
                                 <p>{city.name}</p>
                             </motion.div>
                         )

@@ -3,6 +3,8 @@
 .series-container {
     width: 100%;
     background: $photobox;
+    position: relative;
+    z-index: 0;
 }
 
 .series-megacities {

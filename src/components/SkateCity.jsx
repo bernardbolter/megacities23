@@ -47,7 +47,7 @@ const SkateCity = ({
                 </div>
                 <p>The <b>Skate City</b> image is the first from another series of satellite composites that stitch together famous skate spots and skate parks from different countries.</p>
                 <p>This first one is from the US and was exhibited at the Circylar Gallery, which is a skateboard focused gallery in Berlin.</p>
-                <p className="skate-quote">"When you grow up skateboarding, you like them streets and cities"</p>
+                <p className="skate-quote">&quot;When you grow up skateboarding, you like them streets and cities&quot;</p>
             </div>
 
             <div 
@@ -74,7 +74,12 @@ const SkateCity = ({
                 <div className="skate-info">
                     <div className="skate-infoHeader">
                         <div className="skate-info">
-                            <img src={`${mega.url}/flags/${skateCity.flag}`} alt={`${skateCity.country} Flag`} />
+                            <Image 
+                                src={`${mega.url}/flags/${skateCity.flag}`} 
+                                alt={`${skateCity.country} Flag`} 
+                                width={22}
+                                height={14}    
+                            />
                         </div>
                         <h1>{skateCity.name}</h1>
                     </div>
@@ -96,7 +101,7 @@ const SkateCity = ({
                     <div className="skate-artText">
                         <p className="skate-artSize">121cm x 169cm</p>
                         <div className="skate-artLine" />
-                        <p className="skate-artSize">48" x 69"</p>
+                        <p className="skate-artSize">48&quot; x 69&quot;</p>
                         <p className="skate-artYear">{skateCity.year}</p>
                     </div>
                     {/* <div className="skate-enlarge">

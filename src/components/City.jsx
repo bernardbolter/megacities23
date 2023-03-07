@@ -43,7 +43,12 @@ const City = ({
                 <div className="city-info">
                     <div className="city-header">
                         <div className="city-flag">
-                            <img src={`${mega.url}flags/${megacity.flag}`} alt={`${megacity.country} Flag`} />
+                            <Image 
+                                src={`${mega.url}flags/${megacity.flag}`} 
+                                alt={`${megacity.country} Flag`}
+                                width={22}
+                                height={14}
+                            />
                         </div>
                         <h1>{megacity.name}</h1>
                     </div>
@@ -60,13 +65,13 @@ const City = ({
                         )
                     })}
                     <div className="city-line" />
-                    <p className="city-population">{totalPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                    <p className="city-population">{totalPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
                 </div>
                 <div className="city-artInfo">
                     <div className="city-artText">
                         <p className="city-artSize">121cm x 169cm</p>
                         <div className="city-artLine" />
-                        <p className="city-artSize">48" x 69"</p>
+                        <p className="city-artSize">48&quot; x 69&quot;</p>
                         <p className="city-artYear">{megacity.year}</p>
                     </div>
                     {megacity.completed === null ? (

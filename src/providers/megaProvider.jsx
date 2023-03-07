@@ -18,7 +18,6 @@ const MegaProvider = ({ children }) => {
 
   const [mega, setMega] = useState({
     megacities: [],
-    greetings: [],
     url: "https://thefilterman.de/artwork/megacities/",
     megaIndexSlug: "",
     navOpen: false,
@@ -28,20 +27,13 @@ const MegaProvider = ({ children }) => {
     const rawMegacities = []
     megacitiesData.map(megacity => {
       return rawMegacities.push(megacity)
-    });
-    const rawGreetings = []
-    greetingsData.map(greet => {
-      return rawGreetings.push(greet)
     })
-
-
 
     setMega(state => ({ 
         ...state,
-        megacities: shuffle(rawMegacities),
-        greetings: shuffle(rawGreetings)
+        megacities: shuffle(rawMegacities)
     }));
-  }, [megacitiesData]);
+  }, []);
 
 
   useEffect(() => {

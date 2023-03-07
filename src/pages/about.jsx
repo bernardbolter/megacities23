@@ -1,6 +1,7 @@
-import Logo from "../components/Logo";
-import Nav from "../components/Nav";
-import Typewriter from "../components/Typewriter";
+import Logo from "../components/Logo"
+import Nav from "../components/Nav"
+import Typewriter from "../components/Typewriter"
+import Image from "next/image"
 
 const About = () => {
   return (
@@ -22,27 +23,35 @@ const About = () => {
         </p>
         <div className="about-images">
           <div className="about-image">
-            <img
+            <Image
               src="https://thefilterman.de/exhibits/circylar2020/berlin_exhibit.jpg"
               alt="Exhibit at circylar gallery berlin 2020"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="about-image">
-            <img
+            <Image
               src="https://thefilterman.de/exhibits/circylar2020/berlin_exhibit2.jpg"
               alt="Exhibit at circylar gallery berlin 2020"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="about-image">
-            <img
+            <Image
               src="https://thefilterman.de/exhibits/circylar2020/berlin_exhibit3.jpg"
               alt="Exhibit at circylar gallery berlin 2020"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="about-image">
-            <img
+            <Image
               src="https://thefilterman.de/exhibits/circylar2020/berlin_exhibit4.jpg"
               alt="Exhibit at circylar gallery berlin 2020"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         </div>
@@ -63,7 +72,7 @@ const About = () => {
         </h2>
 
         <h3>
-          "The first exhibition of the Megacities was at the skateboarding
+          &quot;The first exhibition of the Megacities was at the skateboarding
           focused, <b>Circylar gallery</b>, in Berlin. For this exhibition I
           added the Skate City image to the series, which combines satellite
           images of famous skate spots and skateparks from the US.
@@ -71,7 +80,7 @@ const About = () => {
         <h3>
           Growing up as a skateboarder, the city was my playground and adding
           this element to the series, I feel gives a better insight into what
-          it's all about, a celebration of the urban."
+          it&apos;s all about, a celebration of the urban.&quot;
         </h3>
 
         <h4>

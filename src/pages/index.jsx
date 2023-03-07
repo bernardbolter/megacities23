@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react'
 import { MegaContext } from '@/providers/megaProvider'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Loadable from '@loadable/component'
 import { useWindowSize } from '../helpers/useWindowSize'
@@ -142,7 +143,12 @@ const IndexPage = () => {
         />
         {(hoverD !== null) && (hoverD) && (size.width > 768) && (
             <div className="index-thumbnail">
-                <img src={`${mega.url}/${hoverD.slug}/${hoverD.slug}_sm.jpg`} alt={hoverD.slug} />
+                <Image 
+                    src={`${mega.url}/${hoverD.slug}/${hoverD.slug}_sm.jpg`} 
+                    alt={hoverD.slug} 
+                    width={200}
+                    height={280}    
+                />
             </div>
         )}
     </main>
