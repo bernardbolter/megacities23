@@ -1,150 +1,160 @@
 @import './vars.scss';
 
 .nav-background-dark {
-    z-index: 200;
-    position: fixed;
-    top: -16px;
-    right: -79px;
-    width: 130px;
-    height: 130px;
-    background: $photoboxRGBA;
+  z-index: 200;
+  position: fixed;
+  top: -41px;
+  right: -82px;
+  width: 130px;
+  height: 440px;
+  background: $photoboxRGBA;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: rotate(-18deg);
+  padding: 0;
+  transition: all .5s ease;
+
+  @media screen and (max-width: 600px) {
+    transform: rotate(0deg);
+    width: 100%;
+    height: 85px;
+    border-left: none;
+    border-bottom: 1px solid $lightHex;
+    padding: 0 0 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
-    transform: rotate(-18deg);
-    padding: 120px 0 200px 0;
-    transition: all .5s ease;
+    align-items: flex-end;
+    top: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+.nav-background-dark-off {
+  transform: rotate(-45deg) translate(120px, -30px);
+  transition: all .5s ease;
+}
+  
+.navigation {
+  z-index: 201;
+  position: fixed;
+  top: -95px;
+  right: -74px;
+  width: 140px;
+  border-left: 1px solid $lightHex;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: rotate(-18deg);
+  padding: 95px 0 200px 0;
+  transition: all .5s ease;
+  opacity: 1;
+
+  @media screen and (max-width: 600px) {
+    transform: rotate(0deg);
+    width: 100%;
+    height: 85px;
+    border-left: none;
+    border-bottom: 1px solid $lightHex;
+    padding: 0 0 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    top: 0;
+    right: 0;
+    position: absolute;
   }
   
-  .nav-background-dark-open {
-    transform: rotate(-45deg);
-    top: -149px;
-    right: -149px;
-    transition: all .5s ease;
+  a {
+    color: $light;
+    font-weight: 400;
+    font-size: 13px;
+    text-decoration: none;
+    opacity: .7;
+    padding: 4px 0 4px 14px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+      padding: 4px 10px 4px 10px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+
+    svg {
+      fill: $light;
+      opacity: .7;
+      width: 35px;
+      height: 35px;
+      padding: 0 0 0 14px;
+    }
   }
-  
-  .navigation {
-    z-index: 201;
-    position: fixed;
-    top: -104px;
-    right: -74px;
-    width: 130px;
-    border-left: 1px solid $lightHex;
-    background: rgba(255,255,255,0.15);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transform: rotate(-18deg);
-    padding: 110px 0 200px 0;
-    transition: all .5s ease;
-    
-      a {
-        color: $light;
-        font-weight: 600;
-        font-size: 13px;
-        text-decoration: none;
-        opacity: .7;
-        padding: 4px 0 4px 14px;
-    
-        &:hover {
-          text-decoration: underline;
-          opacity: 1;
-        }
-    
-        svg {
-          fill: $light;
-          opacity: .7;
-          width: 35px;
-          height: 35px;
-          padding: 0 0 0 14px;
-        }
-      }
-    
-      .link {
-        opacity: .7;
-        transition: opacity .3s ease;
-      }
-    
-      .link-on {
-        opacity: 0;
-        transition: opacity .3s ease;
-      }
-  
-      .instagram {
-        padding: 7px 0 7px 0;
-      }
-  
-      .globe {
-        padding: 7px 0 0 0;
-      }
+
+  .link {
+    opacity: .7;
+    transition: opacity .3s ease;
+  }
+
+  .globe {
+    padding: 10px 0 0 10px;
+
+    svg {
+      width: 40px;
+      height: 20px;
     }
-    
-    .navigation-on {
-      transform: rotate(-45deg);
-      top: -147px;
-      right: -150px;
-      transition: all .5s ease;
+
+    @media screen and (max-width: 600px) {
+      padding: 0 15px 0 0;
     }
+  }
+}
+
+.navigation-off {
+  opacity: 0;
+  transition: all .5s ease;
+  z-index: -2;
+}
+
+.nav-cancel {
+  position: fixed;
+  z-index: 1001;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  opacity: .5;
+  transition: opacity .5s ease;
+  cursor: pointer;
+
+  @media screen and (max-width: 600px) {
+    display: none;    
+  }
+
+  &:hover {
+    opacity: .7;
+    transition: opacity .5s ease;
+  }
+
+  svg {
+    fill: transparent;
+    stroke: $light;
+  }
+}
+
+.nav-cancel-cross {
+  transform: rotate(0deg);
+  transform-origin: center center;
+  transition: transform .5s ease;
+}
+
+.nav-cancel-cross-off {
+  transform: rotate(-45deg);
+  transition: transform .5s ease;
+}
     
-    .arrows {
-      position: fixed;
-      top: -9px;
-      right: 2px;
-      display: flex;
-      flex-direction: row;
-      z-index: 1001;
-      transform: rotate(-45deg);
-      transition: all .5s ease;
-      padding: 25px 5px;
-      cursor: pointer;
-    
-      .arrow svg {
-        width: 8px;
-        height: 16px;
-        fill: $light;
-        cursor: pointer;
-      }
-    
-      .first svg {
-        opacity: .7;
-        transition: all .5s ease;
-        transform: rotateY(180deg);
-      }
-    
-      .first-on svg{
-        opacity: .3;
-        transition: all .5s ease;
-        transform: rotateY(0deg);
-      }
-    
-      .second svg {
-        opacity: .5;
-        transform: rotateY(180deg);
-        transition: all .5s ease;
-      }
-    
-      .second-on svg {
-        transform: rotateY(0deg);
-        transition: all .5s ease;
-      }
-    
-      .third svg {
-        opacity: .3;
-        transform: rotateY(180deg);
-        transition: all .5s ease;
-      }
-    
-      .third-on svg {
-        opacity: .7;
-        transform: rotateY(0deg);
-        transition: all .5s ease;
-      }
-    }
-    
-    .arrows-on {
-      top: -36px;
-      right: -14px;
-      transform: rotate(-45deg);
-      transition: all .5s ease;
-      padding: 45px 23px 52px 7px;
-    }

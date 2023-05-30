@@ -1,0 +1,22 @@
+.mega-image {
+    display: block;
+}
+
+.mega-img {
+    width: 100%;
+}
+
+.mega-image-container {
+    position: fixed;
+}
+
+.mega-image-background {
+    background: rgba(23,24,25, .4);
+}
+
+.mega-image-preloader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

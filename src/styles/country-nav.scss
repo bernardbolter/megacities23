@@ -2,11 +2,15 @@
 
 .country-container {
     position: absolute;
-    left: 230px;
-    top: 8px;
+    left: auto;
+    right: 10px;
+    top: 96px;
+    z-index: 2001;
 
-    @media only screen and (min-width: 769px) {
-        position: fixed;
+    @media only screen and (min-width: 600px) {
+        right: auto;
+        left: 360px;
+        top: 8px;
     } 
 }
 
@@ -14,7 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 160px;
     height: 35px;
     background: rgba(0,0,0,.5);
     cursor: pointer;
@@ -44,6 +48,13 @@
 
 .country-list {
     margin: 7px 0 0 0;
+}
+
+.country-nav-link {
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+    align-items: center;;
 }
 
 .country-city {

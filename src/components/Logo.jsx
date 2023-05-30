@@ -1,8 +1,31 @@
-const Logo = () => {
+import Link from 'next/link'
+
+import Insta from '../svg/Insta'
+import TikTok from '../svg/TikTok'
+import Snap from '../svg/Snap'
+
+const Logo = ({ title={title}, tagline={tagline} }) => {
+
     return (
         <section className="logo">
-            <h1>MEGA<span className="logo-cities">CITIES</span></h1>
-            <h2>composite country portraits</h2>
+            <Link 
+                href="/"
+                className="logo-title"
+            >
+                <h1>{title}</h1>
+                <h2>{tagline}</h2>
+            </Link>
+            <div className="socials">
+                <a href="https://instagram.com">
+                    <Insta />
+                </a>
+                <a href="http://tiktok.com">
+                    <TikTok />
+                </a>
+                <a href="https://snapchat.com">
+                    <Snap />
+                </a>
+            </div>
         </section>
     )
 }

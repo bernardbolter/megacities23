@@ -1,13 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
 import { shuffle } from "../helpers";
-import {
-  MegaProviderProps,
-  MegaState,
-  MegaContextType, 
-  Megacity, 
-  City,
-  Greeting
-} from "@/types/megacities";
 
 import megacitiesData from '../data/megacities/megacities.json'
 import greetingsData from '../data/greetings/greetings.json'
@@ -21,6 +13,34 @@ const MegaProvider = ({ children }) => {
     url: "https://thefilterman.de/artwork/megacities/",
     megaIndexSlug: "",
     navOpen: false,
+    megaGlobe: true,
+    worldReady: false,
+
+    zoomLevel: 'normal',
+    imageSize: 'lg',
+    controlledPosition: { x: 0, y: 0 },
+    lgBounds: { left: 0, top: 0, right: 0, bottom: 0 },
+    xlBounds: { left: 0, top: 0, right: 0, bottom: 0 },
+    zooming: false,
+    fromSeries: false,
+
+    isInitial: true,
+    initialImageWidth: 0,
+    initialImageLeftMargin: 0,
+    initialImageHeight: 0,
+    initialImageTopMargin: 0,
+
+    currentImagesState: [],
+    navigationOpen: false,
+    imageNavOpen: false,
+    megaNavOpen: false,
+    viewZoomMap: true,
+    megaNavWidth: 200,
+    megaNavFlagMargin: 200,
+    megaNavTopMargin: 49,
+    hideAllNavs: false,
+
+    searchFilter: ''
   });
 
   useEffect(() => {

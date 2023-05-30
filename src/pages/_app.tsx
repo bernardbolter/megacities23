@@ -11,14 +11,24 @@ import '@/styles/logo.scss'
 import '@/styles/mega-nav.scss'
 import '@/styles/skate-city.scss'
 import '@/styles/typewriter.scss'
+import '@/styles/switch-lang.scss'
+import '@/styles/contact.scss'
+import '@/styles/zoom-map.scss'
+import '@/styles/mega-image.scss'
+import '@/styles/mega-nav-info.scss'
+import '@/styles/mega-nav-link.scss'
+import '@/styles/mega-nav-pagination.scss'
+import '@/styles/mega-nav-video.scss'
+import '@/styles/image-nav.scss'
 
+import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import MegaProvider from '../providers/megaProvider'
 
 import { Noto_Sans } from '@next/font/google'
 const noto = Noto_Sans({ weight: ['200', '400','900'], subsets: ['latin', 'cyrillic']})
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <MegaProvider>
       <main>
@@ -27,3 +37,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </MegaProvider>
   )
 }
+
+export default appWithTranslation(App)

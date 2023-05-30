@@ -1,24 +1,51 @@
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useWindowSize } from '../helpers/useWindowSize'
+
+import SwitchLang from '../components/SwitchLang'
 import Logo from "../components/Logo"
 import Nav from "../components/Nav"
-import Typewriter from "../components/Typewriter"
 import Image from "next/image"
 
 const About = () => {
+  const { t } = useTranslation()
+  const size = useWindowSize()
+
   return (
     <section className="about-container">
-      <Logo />
-      <Nav />
-      <Typewriter />
-      <div className="about-line" />
+      <SwitchLang />
+      <Logo 
+        title={t('megacities')}
+        tagline={t('compositeCountryPortaits')}
+      />
+      <Nav 
+        about={t('about')}
+        series={t('series')}
+        prints={t('prints')}
+        contact={t('contact')}
+      />
 
       <div className="about-content">
-        <h1>
-          Megacities is a series of composite country portraits, stitched
-          together with satellite images of the largest cities from each
-          country.
-        </h1>
+          <h1>{t('headline', { ns: 'about' })}</h1>
+          <div classname="about-line" />
+          <h2>{t('description', { ns: 'about' })}</h2>
+        <div className="about-video-container">
+          <div className="about-text">
+            <h1>{t('tageline', { ns: 'about' })}</h1>
+            <h1>{t('satellite', { ns: 'about' })}</h1>
+            <h1>{t('endline', { ns: 'about' })}</h1>
+          </div>
+          <div className="about-video">
+            <video width="720" height="2360" autoPlay loop>
+              <source src="http://www.thefilterman.de/videos/megacities/deutscheStadt/deutscheStadt_overview_web.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+      <div className="about-exhibit">
         <p>
-          Exhibition at <a href="http://circylar.com/">CIRCYLAR Gallery</a>,
+          Exhibition at <a href="http://circylar.com/">CIRCYLAR Gallery</a>,<br />
           Berlin, 2020
         </p>
         <div className="about-images">
@@ -55,7 +82,9 @@ const About = () => {
             />
           </div>
         </div>
-        <h2>
+      </div>
+      
+        {/* <h2>
           <b>Megacities</b> presents a portrait of country though its
           topography.
           <br />
@@ -89,9 +118,20 @@ const About = () => {
 
         <p>For any Inquiries or Questions:</p>
         <h5>bernardbolter@gmail.com</h5>
-      </div>
+      </div> */}
     </section>
   );
 };
 
 export default About;
+
+export async function getStaticProps({ locale = 'en' }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'about'
+      ])),
+    },
+  }
+}

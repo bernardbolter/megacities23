@@ -1,18 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { MegaContext } from '@/providers/megaProvider'
 import { useWindowSize} from '../helpers/useWindowSize'
+import * as Scroll from 'react-scroll'
 
 const SkateCity = ({
     skateCity,
     cityWidth,
     cityHeight,
-    alignCenter
+    even
 }) => {
     const [mega] = useContext(MegaContext)
     const size = useWindowSize()
     const [uniqueCities, setUniqueCities] = useState(0)
     const [uniqueStates, setUniqueStates] = useState(0)
+    const router = useRouter()
 
     useEffect(() => {
         var allCities = []
@@ -30,9 +33,12 @@ const SkateCity = ({
     return (
         <div 
             className="skate-container"
-            style={{ alignItems: alignCenter ? 'center' : 'flex-start' }}
+            style={{ width: size.width < 769 ? cityWidth : 'auto',
+                    flexDirection: size.width < 768 ? 'column' : even ? 'row' : 'row-reverse'
+            }}
         >
-            <div 
+            <Scroll.Element name={skateCity.slug} />
+            {/* <div 
                 className="skate-intro"
                 style={{ height: size.height / 2 }}
             >
@@ -48,28 +54,26 @@ const SkateCity = ({
                 <p>The <b>Skate City</b> image is the first from another series of satellite composites that stitch together famous skate spots and skate parks from different countries.</p>
                 <p>This first one is from the US and was exhibited at the Circylar Gallery, which is a skateboard focused gallery in Berlin.</p>
                 <p className="skate-quote">&quot;When you grow up skateboarding, you like them streets and cities&quot;</p>
-            </div>
+            </div> */}
 
             <div 
                 className="skate-image"
                 style={{ 
-                    width: size.width > 768 ? cityWidth : "90%",
-                    height: size.width > 768 ? "88vh" : "140vw"
+                    width: cityWidth,
+                    height: cityHeight
                 }}
+                onClick={() => router.push(`/${skateCity.slug}`)}
             >
                 <Image
                     src={`${mega.url}/${skateCity.slug}/${skateCity.slug}_md.jpg`}
                     alt={`${skateCity.name}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    width={cityWidth}
+                    height={cityHeight}
                 />
             </div>
 
             <div 
                 className="skate-infoContainer"
-                style={{
-                    height: cityHeight
-                }}
             >
                 <div className="skate-info">
                     <div className="skate-infoHeader">
@@ -80,8 +84,8 @@ const SkateCity = ({
                                 width={22}
                                 height={14}    
                             />
+                            <h1>{skateCity.name}</h1>
                         </div>
-                        <h1>{skateCity.name}</h1>
                     </div>
                     <div className="skate-spots">
                     {skateCity.spots.map(spot => {
@@ -104,7 +108,10 @@ const SkateCity = ({
                         <p className="skate-artSize">48&quot; x 69&quot;</p>
                         <p className="skate-artYear">{skateCity.year}</p>
                     </div>
-                    {/* <div className="skate-enlarge">
+                    <div 
+                        className="city-enlarge"
+                        onClick={() => router.push(`/${skateCity.slug}`)}    
+                    >
                         <svg viewBox="0 0 58 59">
                             <path d="M30.353 14.646H42.28L25.789 31.136H0.0979919V33.591V43.413V51.6V58.4H6.89899H15.085H24.907H27.36V34.373L44.685 17.051V28.979H48.085V11.246H30.353V14.646ZM23.959 55H15.084H6.89799H3.49799V51.6V43.414V34.537H23.959V55Z" />
                             <path d="M42.914 55H33.092V58.4H42.914V55Z" />
@@ -118,7 +125,7 @@ const SkateCity = ({
                             <path d="M3.49799 15.582H0.0979919V25.404H3.49799V15.582Z" />
                         </svg>
                         <p>Enlarge Megacity</p>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>       

@@ -5,32 +5,21 @@
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
-    width: 100%;
+    margin: 10px auto;
 
     @media screen and (min-width: 769px) {
         flex-direction: row;
         justify-content: flex-start;
         width: auto;
+        margin: 10px auto 40px;
     }
 }
 
 .city-image {
     display: block;
     position: relative;
-    z-index: -1;
-
-    @media screen and (min-width: 769px) {
-        width: auto;
-    }
-
-    @media screen and (max-width: 768px) {
-        width: 90% !important;
-        margin: 0 5%;
-    }
-
-    img {
-        width: 100%;
-    }
+    z-index: 1;
+    cursor: pointer;
 }
 
 .city-loader {
@@ -56,20 +45,20 @@
 }
 
 .city-infoContainer {
-    width: 90%;
-    margin: 20px 5%;
+    width: 270px;
+    margin: 20px 5% 20px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    height: auto !important;
 
-    @media screen and (min-width: 769px) {
-        width: 300px;
+    @media screen and (min-width: 768px) {
         margin: 0;
-    }  
+    }
 
-    @media screen and (max-width: 768px) {
-        height: auto !important;
+    @media screen and (min-width: 1000px) {
+        width: 370px;
     }
 }
 
@@ -79,7 +68,7 @@
     padding: 0;
 
     @media only screen and (min-width: 769px) {
-        padding: 5px 100px 0 10px;
+        padding: 15px;
     }  
 }
 
@@ -188,6 +177,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    cursor: pointer;
 
     svg {
         width: 20px;

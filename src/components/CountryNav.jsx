@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MegaContext } from '@/providers/megaProvider'
 import Image from 'next/image'
+import * as Scroll from 'react-scroll'
 
 const CountryNav = ({ setMegaIndex }) => {
     const [mega] = useContext(MegaContext)
@@ -38,7 +39,6 @@ const CountryNav = ({ setMegaIndex }) => {
                                 key={index} 
                                 className="country-city"
                                 onClick={() => {
-                                    setMegaIndex(index)
                                     setShowCountryNav(false)
                                 }}
                                 initial={{
@@ -51,13 +51,23 @@ const CountryNav = ({ setMegaIndex }) => {
                                     opacity: 0
                                 }}
                             >
-                                <Image 
-                                    src={`${mega.url}/flags/${city.flag}`} 
-                                    alt={`${city.country} Flag`} 
-                                    width={22}
-                                    height={14}    
-                                />
-                                <p>{city.name}</p>
+                                <Scroll.Link 
+                                    to={city.slug} 
+                                    smooth={true} 
+                                    offset={-40}
+                                    className="country-nav-link" 
+                                    onClick={() => {
+                                        setShowCountryNav(false)
+                                    }}  
+                                >
+                                    <Image 
+                                        src={`${mega.url}/flags/${city.flag}`} 
+                                        alt={`${city.country} Flag`} 
+                                        width={22}
+                                        height={14}    
+                                    />
+                                    <p>{city.name}</p>
+                                </Scroll.Link>
                             </motion.div>
                         )
                     })}
