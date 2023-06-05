@@ -4,6 +4,7 @@ import { useWindowSize } from '../helpers/useWindowSize'
 
 import MegaNavLink from './MegaNavParts/MegaNavLink'
 import MegaNavInfo from './MegaNavParts/MegaNavInfo'
+import MegaPagination from './MegaNavParts/MegaPagination'
 
 import EyeOpen from '../svg/EyeOpen'
 import EyeClosed from '../svg/EyeClosed'
@@ -23,34 +24,31 @@ import Cancel from '@/svg/Cancel'
 const MegaNav = ({ megacity }) => {
     const [mega, setMega] = useContext(MegaContext)
     const size = useWindowSize()
-    const [ megaNavInfoOpen, setMegaNavInfoOpen ] = useState(false)
-    const [ megaNavVideoOpen, setMegaNavVideoOpen ] = useState(false)
-    const [ megaNavInfoData, setMegaNavInfoData ] = useState({})
     const [ currentLinkIndex, setCurrentLinkIndex ] = useState(1)
     const [ paginatedLinksState, setPaginatedLinksState] = useState([])
 
     const linksPerPage = useMemo(() => {
         var paginationHeight = size.height - 187
-        if (megaNavInfoOpen) {
+        if (mega.megaNavInfoOpen) {
             paginationHeight = paginationHeight - 113
         }
-        if (megaNavVideoOpen) {
+        if (mega.megaNavVideoOpen) {
             paginationHeight = paginationHeight - 100
         }
         return Math.ceil(paginationHeight / 34)
-    }, [size.height, megaNavInfoOpen, megaNavVideoOpen])
+    }, [size.height, mega.megaNavInfoOpen, mega.megaNavVideoOpen])
 
     useEffect(() => {
         if (megacity.type === 'skateboarding') {
             const indexOfLastLink = currentLinkIndex * linksPerPage
             const indexOfFirstLink = indexOfLastLink - linksPerPage
-            setPaginatedLinksState(mega.currentImagesState.slice(indexOfFirstLink, indexOfLastLink))
+            setPaginatedLinksState(mega.megaNavCities.slice(indexOfFirstLink, indexOfLastLink))
         } else {
-            setPaginatedLinksState(mega.currentImagesState)
+            setPaginatedLinksState(mega.megaNavCities)
         }
 
         return () => null
-    }, [ currentLinkIndex, mega.currentImagesState, megacity.type, linksPerPage ])
+    }, [ currentLinkIndex, mega.megaNavCities, megacity.type, linksPerPage ])
 
     const megaNameCallback = useCallback(node => {
         console.log(node)
@@ -81,14 +79,6 @@ const MegaNav = ({ megacity }) => {
                         width: mega.megaNavWidth
                     }}
                 />
-                <div 
-                    className={mega.megaNavOpen ? 'mega-arrows mega-arrows-open' : 'mega-arrows'}
-                >
-                    <Cancel navOpen={mega.megaNavOpen} />
-                    {/* <Arrow className={mega.megaNavOpen ? 'mega-arrow first' : 'mega-arrow first first-on'}/>
-                    <Arrow className={mega.megaNavOpen ? 'mega-arrow second' : 'mega-arrow second second-on'}/>
-                    <Arrow className={mega.megaNavOpen ? 'mega-arrow third' : 'mega-arrow third third-on'}/> */}
-                </div>
                 <div 
                     className={mega.megaNavOpen ? 'mega-nav-flag mega-nav-flag-open' : 'mega-nav-flag'}
                     style={mega.megaNavOpen ? { left: `${mega.megaNavFlagMargin}px`} : { left : '44px'}}
@@ -157,19 +147,14 @@ const MegaNav = ({ megacity }) => {
                             )}
                     </div>)}
 
-                    {megaNavInfoOpen && (
+                    {mega.megaNavInfoOpen && (
                         <MegaNavInfo
-                            info={megaNavInfoData}
-                            setMegaNavInfoOpen={setMegaNavInfoOpen}
-                            setMegaNavInfoData={setMegaNavInfoData}
-                            megaNavVideoOpen={megaNavVideoOpen}
-                            setMegaNavVideoOpen={setMegaNavVideoOpen}
                             megaNavWidth={mega.megaNavWidth}
                             megacity={megacity}
                         />
                     )}
 
-                    {mega.searchFilter.length > 0 && mega.currentImagesState.length === 0 ? (
+                    {mega.searchFilter.length > 0 && mega.megaNavCities.length === 0 ? (
                         <div className="no-search-container">
                             <p>Nothing Found</p>
                         </div>
@@ -183,8 +168,6 @@ const MegaNav = ({ megacity }) => {
                                         cityInfo={cityInfo} 
                                         linkIndex={index}
                                         megaNavWidth={mega.megaNavWidth}
-                                        setMegaNavInfoOpen={setMegaNavInfoOpen}
-                                        setMegaNavInfoData={setMegaNavInfoData}
                                         skateboarding={megacity.type === 'skateboarding'}
                                     />
                                     )
@@ -195,7 +178,7 @@ const MegaNav = ({ megacity }) => {
                     {megacity.type === 'skateboarding' && (
                         <MegaPagination 
                             linksPerPage={linksPerPage}
-                            totalLinks={currentImagesState.length}
+                            totalLinks={mega.megaNavCities.length}
                             currentLinkIndex={currentLinkIndex}
                             setCurrentLinkIndex={setCurrentLinkIndex}
                         />

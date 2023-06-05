@@ -7,9 +7,7 @@ import EyeClosed from '@/svg/EyeClosed'
 const MegaNavLink = ({ 
     cityInfo, 
     linkIndex, 
-    megaNavWidth, 
-    setMegaNavInfoOpen,
-    setMegaNavInfoData,
+    megaNavWidth,
     skateboarding
 }) => {
     // console.log(cityInfo)
@@ -25,9 +23,31 @@ const MegaNavLink = ({
                 height: skateboarding ? 34 : 39
             }}
             onClick={() => {
-                console.log(cityInfo.name)
-                // setMegaNavInfoData(cityInfo)
-                setMegaNavInfoOpen(true)
+                var newCities = [...mega.megaNavCities]
+                var newViewOverlay
+                if (newCities[linkIndex].visible === true) {
+                    console.log('its true')
+                    newCities.forEach(city => {
+                        return city.visible = false
+                    })
+                    newViewOverlay = false
+                } else {
+                    newCities.forEach(city => {
+                        return city.visible = false
+                    })
+                    newCities[linkIndex].visible = true
+                    newViewOverlay = true
+                }
+                setMega(state => ({ 
+                    ...state, 
+                    megaNavInfoData: cityInfo,
+                    megaNavInfoOpen: true,
+                    megaNavVideoOpen: true,
+                    overlaySlug: cityInfo.slug,
+                    viewOverlay: newViewOverlay,
+                    megaNavCities: newCities,
+                    megaNavInfoData: cityInfo
+                }))
             }}
         >
             <div 

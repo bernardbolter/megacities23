@@ -52,3 +52,131 @@ export const getPopulation = cities => {
   });
   return totalPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
+
+export const getCityMeasurements = (width, height) => {
+  var cityWidth = 0;
+  var cityHeight = 0;
+  var getCityWidth = Math.round((height - 100) * 0.714285143);
+  if (getCityWidth > width * 0.9) {
+    cityWidth = width * 0.9;
+    cityHeight = width * 0.9 * 1.39875;
+  } else {
+    cityWidth = getCityWidth;
+    cityHeight = getCityWidth * 1.39875;
+  }
+
+  return [cityWidth, cityHeight];
+};
+
+export const setNewBounds = (winWidth, winHeight) => {
+  const lg = {
+    imgWidth: 1200,
+    imgHeight: 1679,
+    imgMargin: 20,
+  };
+  const xl = {
+    imgWidth: 1600,
+    imgHeight: 2238,
+    imgMargin: 40,
+  };
+
+  var newLgBounds = {
+    left:
+      winWidth > lg.imgWidth
+        ? -((winWidth - lg.imgWidth) / 2 - lg.imgMargin)
+        : -((lg.imgWidth - winWidth) / 2 + lg.imgMargin),
+
+    right:
+      winWidth > lg.imgWidth
+        ? (winWidth - lg.imgWidth) / 2 - lg.imgMargin
+        : (lg.imgWidth - winWidth) / 2 + lg.imgMargin,
+
+    top:
+      winHeight > lg.imgHeight
+        ? -((winHeight - lg.imgHeight) / 2 - lg.imgMargin)
+        : -((lg.imgHeight - winHeight) / 2 + lg.imgMargin),
+
+    bottom:
+      winHeight > lg.imgHeight
+        ? (winHeight - lg.imgHeight) / 2 - lg.imgMargin
+        : (lg.imgHeight - winHeight) / 2 + lg.imgMargin,
+  };
+
+  var newXlBounds = {
+    left:
+      winWidth > xl.imgWidth
+        ? -((winWidth - xl.imgWidth) / 2 - xl.imgMargin)
+        : -((xl.imgWidth - winWidth) / 2 + xl.imgMargin),
+
+    right:
+      winWidth > xl.imgWidth
+        ? (winWidth - xl.imgWidth) / 2 - xl.imgMargin
+        : (xl.imgWidth - winWidth) / 2 + xl.imgMargin,
+
+    top:
+      winHeight > xl.imgHeight
+        ? -((winHeight - xl.imgHeight) / 2 - xl.imgMargin)
+        : -((xl.imgHeight - winHeight) / 2 + xl.imgMargin),
+
+    bottom:
+      winHeight > xl.imgHeight
+        ? (winHeight - xl.imgHeight) / 2 - xl.imgMargin
+        : (xl.imgHeight - winHeight) / 2 + xl.imgMargin,
+  };
+
+  return [newLgBounds, newXlBounds];
+};
+
+export const updateControlledPosition = (
+  controlledPosition,
+  zoom,
+  lgBounds
+) => {
+  var multiplier;
+  if (zoom === "lg") {
+    multiplier = 0.75;
+  } else {
+    multiplier = 1.33333;
+  }
+
+  var isLeft;
+
+  if (controlledPosition.x > 0) {
+    isLeft = true;
+  } else {
+    isLeft = false;
+  }
+
+  var isUp;
+
+  if (controlledPosition.y < 0) {
+    isUp = true;
+  } else {
+    isUp = false;
+  }
+
+  var newX = controlledPosition.x * multiplier;
+  var newY = controlledPosition.y * multiplier;
+
+  if (zoom === "lg") {
+    if (newX < lgBounds.left || newX > lgBounds.right) {
+      if (isLeft) {
+        newX = lgBounds.right;
+      } else {
+        newX = lgBounds.left;
+      }
+    }
+  }
+
+  if (zoom === "lg") {
+    if (newY < lgBounds.top || newY > lgBounds.bottom) {
+      if (isUp) {
+        newY = lgBounds.top;
+      } else {
+        newY = lgBounds.bottom;
+      }
+    }
+  }
+
+  return [newX, newY];
+};

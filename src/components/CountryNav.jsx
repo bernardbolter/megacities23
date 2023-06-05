@@ -4,7 +4,7 @@ import { MegaContext } from '@/providers/megaProvider'
 import Image from 'next/image'
 import * as Scroll from 'react-scroll'
 
-const CountryNav = ({ setMegaIndex }) => {
+const CountryNav = () => {
     const [mega] = useContext(MegaContext)
     const [showCountryNav, setShowCountryNav] = useState(false)
 

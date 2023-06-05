@@ -1,7 +1,6 @@
-import React from 'react'
-import { ReactComponent as Arrow } from '../../../svgs/arrow.svg'
-
-import './megaPagination.scss'
+import { useContext } from 'react'
+import { MegaContext } from '../../providers/megaProvider'
+import Arrow from '../../svg/Arrow'
 
 const MegaPagination = ({ 
     linksPerPage, 
@@ -9,6 +8,7 @@ const MegaPagination = ({
     currentLinkIndex,
     setCurrentLinkIndex
 }) => {
+    const [mega, setMega] = useContext(MegaContext)
     const linkNumbers = []
 
     for (let i = 1; i <= Math.ceil(totalLinks / linksPerPage); i++) {

@@ -62,7 +62,10 @@ const SkateCity = ({
                     width: cityWidth,
                     height: cityHeight
                 }}
-                onClick={() => router.push(`/${skateCity.slug}`)}
+                onClick={() => {
+                    console.log(skateCity.slug)
+                    router.push(`/${skateCity.slug}`)
+                }}
             >
                 <Image
                     src={`${mega.url}/${skateCity.slug}/${skateCity.slug}_md.jpg`}

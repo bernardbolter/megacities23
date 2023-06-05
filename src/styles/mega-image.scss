@@ -6,6 +6,20 @@
     width: 100%;
 }
 
+.mega-image-normal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+}
+
 .mega-image-container {
     position: fixed;
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 import Link from 'next/link'
 
@@ -7,13 +8,14 @@ import Cancel from '../svg/Cancel'
 
 const Nav = ({ about, series, prints, contact }) => {
     const [navOpen, setNavOpen] = useState(true)
+    const router = useRouter()
 
     return (
         <div className="navigation-container">
             <div className="nav-cancel" onClick={() => setNavOpen(!navOpen)}>
                 <Cancel navOpen={navOpen} />
             </div>
-            <section className={navOpen ? "navigation" : "navigation navigation-off"}>
+            <section className={navOpen ? "navigation" : "navigation navigation-off"} >
                 <Link className="nav-link" href="/about">{about}</Link>
                 <Link className="nav-link" href="/series">{series}</Link>
                 <Link className="nav-link" href="/prints">{prints}</Link>
@@ -22,7 +24,10 @@ const Nav = ({ about, series, prints, contact }) => {
                     <Globe />
                 </Link>
             </section>
-            <div className={navOpen ? "nav-background-dark" : "nav-background-dark nav-background-dark-off"} />
+            <div 
+                className={navOpen ? "nav-background-dark" : "nav-background-dark nav-background-dark-off"} 
+                style={{ top: router.pathname === '/[slug]' ? -45 : 0}}    
+            />
         </div>
     )
 }

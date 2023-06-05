@@ -90,8 +90,8 @@
 .mega-nav-name-open {
     transform: rotate(0deg);
     transition: $regular;
-    top: -10px;
-    left: 60px;
+    top: 12px;
+    left: 40px;
     opacity: 0.9;
 
     span {
@@ -100,64 +100,14 @@
     }
 }
 
-.mega-arrows {
-    position: fixed;
-    top: 26px;
-    left: 16px;
-    display: flex;
-    flex-direction: row;
-    z-index: 101;
-    transform: rotate(72deg);
-    transition: all .5s ease;
-  
-    .mega-arrow {
-      width: 7px;
-      height: 12px;
-      fill: $light;
-    }
-  
-    .first {
-      opacity: .7;
-      transition: all .5s ease;
-      transform: rotateY(180deg);
-    }
-  
-    .first-on {
-      opacity: .3;
-      transition: all .5s ease;
-      transform: rotateY(0deg);
-    }
-  
-    .second {
-      opacity: .5;
-      transform: rotateY(180deg);
-      transition: all .5s ease;
-    }
-  
-    .second-on {
-      transform: rotateY(0deg);
-      transition: all .5s ease;
-    }
-  
-    .third {
-      opacity: .3;
-      transform: rotateY(180deg);
-      transition: all .5s ease;
-    }
-  
-    .third-on {
-      opacity: .7;
-      transform: rotateY(0deg);
-      transition: all .5s ease;
-    }
-  }
+.mega-nav-cancel {
+  width: 15px;
+  height: 15px;
 
-  .mega-arrows-open {
-      transform: rotate(0deg);
-      transition: $regular;
-      top: 14px;
-      left: 14px;
+  svg {
+    width: 100%;
   }
+}
 
 ///////////////////////////////////////////////////////
 // MEGA BODY

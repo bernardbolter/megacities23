@@ -1,16 +1,19 @@
-import React from 'react'
+import { useContext} from 'react'
 import ReactPlayer from 'react-player'
+import { MegaContext } from '../../providers/megaProvider'
 
 import Close from '@/svg/Close'
 
-const MegaVideo = ({ video, artist, title, start, setMegaNavVideoOpen }) => {
+const MegaVideo = () => {
+    const [mega, setMega] = useContext(MegaContext)
+    const { video, artist, title, start } = mega.megaNavInfoData
 
     return (
         <div className="mega-video-container">
             <ReactPlayer
                 url={video}
-                height={megaNavWidth * .6}
-                width={megaNavWidth}
+                height={mega.megaNavWidth * .6}
+                width={mega.megaNavWidth}
                 config={{
                     youtube: {
                         playerVars: {
@@ -26,7 +29,9 @@ const MegaVideo = ({ video, artist, title, start, setMegaNavVideoOpen }) => {
                 <h2>{title}</h2>
                 <div 
                     className="mega-video-close"
-                    onClick={() => setMegaNavVideoOpen(false)}
+                    onClick={() => {
+                        setMega(state => ({ ...state, megaNavVideoOpen: false}))
+                    }}
                 >
                     <Close />
                     <p>close</p>

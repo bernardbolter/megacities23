@@ -14,7 +14,7 @@ const ImageNav = () => {
             <section className={mega.hideAllNavs ? 'image-nav image-nav-hide' : 'image-nav'}>
                 {mega.hideAllNavs ? (
                     <div 
-                        className="image-nav-eye"
+                        className={mega.hideAllNavs ? 'image-nav-eye image-nav-eye-hide' : 'image-nav-eye'}
                         onClick={() => setMega(state => ({ ...state, hideAllNavs: false}))}
                     >
                         <EyeOpen />
@@ -27,24 +27,23 @@ const ImageNav = () => {
                         <EyeClosed />
                     </div>
                 )}
-                {mega.isInitial ? (
+                {mega.zoom === 'normal' ? (
                     <div 
                         className="image-nav-plus"
-
-                        onClick={() => setMega(state => ({ ...state, zoomLevel: 'lg', isInital: false }))}
+                        onClick={() => setMega(state => ({ ...state, zoom: 'lg', zooming: true }))}
                     >
                         <Plus />
                     </div>
                 ) : (
                     <div 
-                        className={mega.zoomLevel === 'lg' ? "image-nav-plus" : "image-nav-plus image-nav-plus-disabled"}
-                        onClick={() => zoomLevel === 'lg' ? setMega(state => ({ ...state, zoomLevel: 'xl' })) : null}
+                        className={mega.zoom === 'lg' ? "image-nav-plus" : "image-nav-plus image-nav-plus-disabled"}
+                        onClick={() => mega.zoom === 'lg' ? setMega(state => ({ ...state, zoom: 'xl', zooming: true })) : null}
                     >
                         <Plus />
                     </div>
                 )}
                 
-                {mega.isInitial ? (
+                {mega.zoom === 'normal' ? (
                     <div 
                         className="image-nav-minus image-nav-minus-disabled" 
                     >
@@ -53,9 +52,9 @@ const ImageNav = () => {
                 ) : (
                     <div 
                         className="image-nav-minus"
-                        onClick={() => (zoomLevel === 'lg') 
-                            ? setMega(state => ({ ...state, zoomLevel: 'normal', isIntial: true })) 
-                            : setMega(state => ({ ...state, zoomLevel: 'lg' }))
+                        onClick={() => (mega.zoom === 'lg') 
+                            ? setMega(state => ({ ...state, zoom: 'normal', zooming: false })) 
+                            : setMega(state => ({ ...state, zoom: 'lg', zooming: true  }))
                         }       
                     >
                         <Minus />

@@ -14,25 +14,10 @@
   transform: rotate(-18deg);
   padding: 0;
   transition: all .5s ease;
-
-  @media screen and (max-width: 600px) {
-    transform: rotate(0deg);
-    width: 100%;
-    height: 85px;
-    border-left: none;
-    border-bottom: 1px solid $lightHex;
-    padding: 0 0 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
-    top: 0;
-    right: 0;
-    position: absolute;
-  }
 }
 
 .nav-background-dark-off {
+  top: 0;
   transform: rotate(-45deg) translate(120px, -30px);
   transition: all .5s ease;
 }
@@ -40,7 +25,7 @@
 .navigation {
   z-index: 201;
   position: fixed;
-  top: -95px;
+  top: -97px;
   right: -74px;
   width: 140px;
   border-left: 1px solid $lightHex;
@@ -52,22 +37,6 @@
   padding: 95px 0 200px 0;
   transition: all .5s ease;
   opacity: 1;
-
-  @media screen and (max-width: 600px) {
-    transform: rotate(0deg);
-    width: 100%;
-    height: 85px;
-    border-left: none;
-    border-bottom: 1px solid $lightHex;
-    padding: 0 0 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
-    top: 0;
-    right: 0;
-    position: absolute;
-  }
   
   a {
     color: $light;
@@ -76,11 +45,6 @@
     text-decoration: none;
     opacity: .7;
     padding: 4px 0 4px 14px;
-
-    @media screen and (max-width: 600px) {
-      font-size: 15px;
-      padding: 4px 10px 4px 10px;
-    }
 
     &:hover {
       text-decoration: underline;
@@ -108,10 +72,6 @@
       width: 40px;
       height: 20px;
     }
-
-    @media screen and (max-width: 600px) {
-      padding: 0 15px 0 0;
-    }
   }
 }
 
@@ -131,10 +91,6 @@
   opacity: .5;
   transition: opacity .5s ease;
   cursor: pointer;
-
-  @media screen and (max-width: 600px) {
-    display: none;    
-  }
 
   &:hover {
     opacity: .7;

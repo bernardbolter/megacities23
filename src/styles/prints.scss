@@ -1,0 +1,43 @@
+@import "./vars.scss";
+
+.prints-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 90%;
+    margin: 50px 5%;
+}
+
+.prints-info {
+    width: 100%;
+    margin: 10% 0;
+    padding: 0;
+
+    h1 {
+        text-align: center;
+        color: white;
+    }
+}
+
+.prints-selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.draggable-print {
+    width: 200px;
+    height: 300px;
+    background: #333;
+    display: flex;
+}
+
+.prints-wall {
+    width: 100%;
+    height: 300px;
+    background: #999;
+}
