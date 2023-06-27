@@ -1,6 +1,6 @@
 import { useMemo, useEffect } from 'react'
 import { useRouter } from 'next/router'
-
+import { useWindowSize } from '../helpers/useWindowSize'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
+import NavMobile from '../components/NavMobile'
 import SwitchLang from '../components/SwitchLang'
 import Typewriter from "../components/Typewriter"
 
@@ -32,7 +33,7 @@ const theme = createTheme({
 const Contact = (props) => {
     const { locale } = useRouter()
     const { t, i18n } = useTranslation(['common', 'contact'])
-    // console.log(i18n.observers.languageChanged())
+    const size = useWindowSize()
     const tooShort = useMemo(() => {
         return t('tooShort', { ns: 'contact '})
     }, [locale])
@@ -68,12 +69,21 @@ const Contact = (props) => {
                     title={t('megacities')}
                     tagline={t('compositeCountryPortaits')}
                     />
+                {size.width > 600 ? (
                 <Nav 
-                    about={t('about')}
-                    series={t('series')}
-                    prints={t('prints')}
-                    contact={t('contact')}
-                />
+                        about={t('about')}
+                        series={t('series')}
+                        prints={t('prints')}
+                        contact={t('contact')}
+                    /> 
+                ): (
+                    <NavMobile
+                        about={t('about')}
+                        series={t('series')}
+                        prints={t('prints')}
+                        contact={t('contact')}
+                    /> 
+                )}
                 <SwitchLang />
                 <Typewriter />
                 <div className="contact-text">

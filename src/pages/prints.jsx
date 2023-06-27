@@ -3,10 +3,12 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useDrop } from 'react-dnd'
 import DraggablePrint from '../components/DraggablePrint'
+import { useWindowSize } from '../helpers/useWindowSize'
 
 import SwitchLang from '../components/SwitchLang'
 import Logo from "../components/Logo"
 import Nav from "../components/Nav"
+import NavMobile from '../components/NavMobile'
 
 const printsData = [
     {id: 1, name: 'Deutsche Stadt'},
@@ -16,6 +18,7 @@ const printsData = [
 
 const Prints = () => {
     const { t } = useTranslation()
+    const size = useWindowSize()
 
     const [wall, setWall] = useState([])
     console.log(wall)
@@ -37,12 +40,21 @@ const Prints = () => {
                 title={t('megacities')}
                 tagline={t('compositeCountryPortaits')}
             />
-            <Nav 
-                about={t('about')}
-                series={t('series')}
-                prints={t('prints')}
-                contact={t('contact')}
-            />
+            {size.width > 600 ? (
+                <Nav 
+                    about={t('about')}
+                    series={t('series')}
+                    prints={t('prints')}
+                    contact={t('contact')}
+                /> 
+            ): (
+                <NavMobile
+                    about={t('about')}
+                    series={t('series')}
+                    prints={t('prints')}
+                    contact={t('contact')}
+                /> 
+            )}
             <div className="prints-info">
                 <h1>A1 Prints</h1>
             </div>

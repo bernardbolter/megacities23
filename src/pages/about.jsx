@@ -5,6 +5,7 @@ import { useWindowSize } from '../helpers/useWindowSize'
 import SwitchLang from '../components/SwitchLang'
 import Logo from "../components/Logo"
 import Nav from "../components/Nav"
+import NavMobile from '../components/NavMobile'
 import Image from "next/image"
 
 const About = () => {
@@ -18,12 +19,21 @@ const About = () => {
         title={t('megacities')}
         tagline={t('compositeCountryPortaits')}
       />
-      <Nav 
-        about={t('about')}
-        series={t('series')}
-        prints={t('prints')}
-        contact={t('contact')}
-      />
+      {size.width > 600 ? (
+          <Nav 
+              about={t('about')}
+              series={t('series')}
+              prints={t('prints')}
+              contact={t('contact')}
+          /> 
+      ): (
+          <NavMobile
+              about={t('about')}
+              series={t('series')}
+              prints={t('prints')}
+              contact={t('contact')}
+          /> 
+      )}
 
       <div className="about-content">
           <h1>{t('headline', { ns: 'about' })}</h1>

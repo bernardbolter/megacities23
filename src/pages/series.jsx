@@ -8,7 +8,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
-import NavSeries from '../components/NavSeries'
+import NavMobile from '../components/NavMobile'
 import SwitchLang from '../components/SwitchLang'
 import CountryNav from '../components/CountryNav'
 import Loader from '../components/Loader'
@@ -46,7 +46,7 @@ const Series = () => {
                     contact={t('contact')}
                 /> 
             ): (
-                <NavSeries
+                <NavMobile
                     about={t('about')}
                     series={t('series')}
                     prints={t('prints')}

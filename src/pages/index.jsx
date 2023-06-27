@@ -1,12 +1,14 @@
 import { useContext } from 'react'
 import { MegaContext } from '@/providers/megaProvider'
 import { NextSeo } from 'next-seo'
+import { useWindowSize } from "../helpers/useWindowSize"
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
+import NavMobile from '../components/NavMobile'
 import SwitchLang from '../components/SwitchLang'
 import Switch from '../svg/Switch'
 
@@ -16,6 +18,7 @@ import { curvedText } from '../helpers/index'
 const IndexPage = () => {
     const { t } = useTranslation('common')
     const [mega, setMega] = useContext(MegaContext)
+    const size = useWindowSize()
 
   return (
     <>
@@ -29,12 +32,22 @@ const IndexPage = () => {
             title={t('megacities')}
             tagline={t('compositeCountryPortaits')}
           />
-          <Nav 
-            about={t('about')}
-            series={t('series')}
-            prints={t('prints')}
-            contact={t('contact')}
-          />
+          {size.width > 600 ? (
+            <Nav 
+              about={t('about')}
+              series={t('series')}
+              prints={t('prints')}
+              contact={t('contact')}
+            />
+          ) : (
+            <NavMobile
+                about={t('about')}
+                series={t('series')}
+                prints={t('prints')}
+                contact={t('contact')}
+            /> 
+          )}
+          
 
           <div className="index-world-ready">
             <img src="/images/globe.gif" alt="spinning globe animation" />
