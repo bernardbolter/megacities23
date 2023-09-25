@@ -1,78 +1,73 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useDrop } from 'react-dnd'
-import DraggablePrint from '../components/DraggablePrint'
+import { MegaContext } from '../providers/megaProvider'
+import { StoreContext } from '../providers/storeProvider'
+import Link from 'next/link'
+import { shuffle } from '../helpers'
+import prints from '../data/prints/prints.json'
+
 import { useWindowSize } from '../helpers/useWindowSize'
 
-import SwitchLang from '../components/SwitchLang'
-import Logo from "../components/Logo"
-import Nav from "../components/Nav"
-import NavMobile from '../components/NavMobile'
+import Header from '../components/Header'
 
-const printsData = [
-    {id: 1, name: 'Deutsche Stadt'},
-    {id: 2, name: 'America City'},
-    {id: 3, name: 'Skate City'}
-]
+import GalleryView from '../components/GalleryView'
 
-const Prints = () => {
+import Switch from '../svg/Switch'
+import Cart from '../svg/Cart'
+
+const Prints = props => {
     const { t } = useTranslation()
     const size = useWindowSize()
-
-    const [wall, setWall] = useState([])
-    console.log(wall)
-    const [{ isOver }, dropRef] = useDrop({
-        accept: 'print',
-        drop: item => setWall(state => [...state, item]),
-        // drop: (item) => setWall((state) => {
-        //     !state.includes(item) ? [...state, item] : wall
-        // }),
-        collect: (monitor) => ({
-            isOver: monitor.isOver()
-        })
-    })
+    const [mega, setMega] = useContext(MegaContext)
+    const [store, setStore] = useContext(StoreContext)
     
     return (
         <div className="prints-container">
-            <SwitchLang />
-            <Logo 
+            <Header 
                 title={t('megacities')}
-                tagline={t('compositeCountryPortaits')}
+                tagline={t('compositeCountryPortraits')}
+                about={t('about')}
+                series={t('series')}
+                prints={t('prints')}
+                contact={t('contact')}
             />
-            {size.width > 600 ? (
-                <Nav 
-                    about={t('about')}
-                    series={t('series')}
-                    prints={t('prints')}
-                    contact={t('contact')}
-                /> 
-            ): (
-                <NavMobile
-                    about={t('about')}
-                    series={t('series')}
-                    prints={t('prints')}
-                    contact={t('contact')}
-                /> 
-            )}
+            
             <div className="prints-info">
-                <h1>A1 Prints</h1>
+                <h1 className="prints-title"><span>A1</span> {t('prints', {ns: 'prints'})}</h1>
+                <ol className="prints-list">
+                    <li>{t('editionOf500', {ns: 'prints'})}</li>
+                    <li>{t('printedOn250gmMattePaper', {ns: 'prints'})}</li>
+                    <li>{t('signedAndNumbered', {ns: 'prints'})}</li>
+                </ol>
+                {store.printSelection.length > 0 && (
+                    <Link href="/checkout" className="cart-container">
+                        <p>{store.printSelection.length}</p>
+                        <Cart />
+                    </Link>
+                )}
+                <div 
+                    className="prints-select-view"
+                    onClick={() => setMega(state => ({ ...state, megaGlobe: !state.megaGlobe }))}
+                >
+                    <Switch />
+                    <p>{!mega.megaGlobe ? `${t('galleryView', {ns: 'prints'})}` : `${t('listView', {ns: 'prints'})}`}</p>
+                </div>
             </div>
-
-            <div className="prints-selection">
-                {printsData.map(print => (
-                    <DraggablePrint key={print.id} draggable id={print.id} name={print.name} />
-                ))}
-            </div>
-
-            <div 
-                className="prints-wall"
-                ref={dropRef}
-                style={{ backgroundColor: isOver ? 'red' : 'white' }}
-            >
-                {wall.map(print => <DraggablePrint id={print.id} name={print.name} />)}
-                {isOver && <div>Drop Here!</div>}
-            </div>
+            
+            <GalleryView 
+                dragAndDrop={t('dragAndDrop', {ns: 'prints'})}
+                scroll={t('scroll', {ns: 'prints'})}
+                shuffledPrints={props.shuffledPrints}
+                drop={t('dropHere', {ns: 'prints'})}
+                directFromStudio={t('directFromTheStudio', {ns: 'prints'})}
+                studioTour={t('studioTour', {ns: 'prints'})}
+                yourSelection={t('yourSelection', {ns: 'prints'})}
+                withinEU={t('freeShippingWithinTheEU')}
+                worldwide={t('freeShippingWorldwide')}
+                checkout={t('checkout', {ns: 'prints'})}
+                remove={t('remove', {ns: 'prints'})}
+            />
         </div>
     )
 }
@@ -86,6 +81,7 @@ export async function getStaticProps({ locale = 'en' }) {
         'common',
         'prints'
       ])),
+      shuffledPrints: shuffle(prints)
     },
   }
 }

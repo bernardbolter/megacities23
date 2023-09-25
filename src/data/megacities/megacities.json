@@ -6,6 +6,7 @@
       "type" : "megacity",
       "year" : "2020",
       "completed" : true,
+      "a1print" : true,
       "cities" : [
         {
           "name" : "Berlin",
@@ -92,6 +93,7 @@
       "type" : "megacity",
       "year" : "2020",
       "completed" : true,
+      "a1print" : true,
       "cities" : [
         {
           "name" : "New York City",
@@ -167,6 +169,7 @@
       "type" : "megacity",
       "year" : "2020",
       "completed" : true,
+      "a1print" : false,
       "cities" : [
         {
           "name" : "上海市",
@@ -240,6 +243,7 @@
           "year" : "2020",
           "type" : "skateboarding",
           "completed" : true,
+          "a1print" : true,
           "spots" : [
             {
               "name" : "3rd and Army",

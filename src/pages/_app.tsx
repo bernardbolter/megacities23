@@ -22,10 +22,15 @@ import '@/styles/mega-nav-pagination.scss'
 import '@/styles/mega-nav-video.scss'
 import '@/styles/image-nav.scss'
 import '@/styles/prints.scss'
+import '@/styles/gallery-view.scss'
+import '@/styles/draggable-print.scss'
+import '@/styles/wall-view.scss'
+import '@/styles/print-summary.scss'
 
 import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import MegaProvider from '../providers/megaProvider'
+import StoreProvider from '../providers/storeProvider'
 
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -36,11 +41,13 @@ const noto = Noto_Sans({ weight: ['200', '400','900'], subsets: ['latin', 'cyril
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <MegaProvider>
-      <DndProvider backend={HTML5Backend}>
-        <main>
-          <Component {...pageProps} />
-        </main>
-      </DndProvider>
+      <StoreProvider>
+        <DndProvider backend={HTML5Backend}>
+          <main>
+            <Component {...pageProps} />
+          </main>
+        </DndProvider>
+      </StoreProvider>
     </MegaProvider>
   )
 }

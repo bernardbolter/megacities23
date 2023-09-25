@@ -4,173 +4,80 @@
     width: 100%;
     background: $photobox;
     overflow: hidden;
-    padding: 130px 0 0 0;
+    padding: 0;
+    margin: 0;
 }
 
-.about-line {
-    width: 40%;
-    margin: 88px 75% 0 5%;
-    height: 1px;
-    background: rgb(252,253,254);
-    opacity: .15;
+.about-overview {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-    @media only screen and (min-width: $medium) {
-        width: 25%;
-        margin: 115px 65% 0 5%;
-    }
-
-    @media only screen and (min-width: $large) {
-        width: 30%;
-        margin: 125px 65% 0 5%;
-    }
+.about-headline {
+    font-weight: 900;
+    font-size: 28px;
+    color: $light;
+    margin: 0 0 0 75px;
+    padding: 0;
 }
 
 .about-content {
-    width: 90%;
-    margin: 45px 5%;
+    width: 100%;
+    margin: 90px 0 50px;
+}
 
-    @media only screen and (min-width: $medium) {
-        margin: 35px 5%;
+.about-overview-effect {
+    margin: 5px 0 0 95px;
+    padding: 0;
+    color: $light;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.about-overview-text {
+    margin: 10px 5%;
+    padding: 2%;
+    color: $light;
+    font-size: 14px;
+    line-height: 20px;
+    background: $photoboxRGBA;
+    font-weight: 400;
+    opacity: .7;
+}
+
+.about-wiki-link {
+    width: 95%;
+    text-align: right;
+    color: $light;
+    font-size: 10px;
+    opacity: .6;
+    margin: 0 5% 20px auto;
+    transition: opacity .5s ease-in-out;
+
+    &:hover {
+        opacity: .8;
+        transition: opacity .5s ease-in-out;
     }
+}
 
-    h1 {
-        font-size: 16px;
-        font-weight: 500;
-        color: rgb(251,253,255);
-        opacity: 0.8;
-        width: 100%;
-        line-height: 1.8;
-        text-indent: 10px;
+.about-overview-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
-        @media only screen and (min-width: $medium) {
-            font-size: 17px;
-            width: 75%;
-            line-height: 1.7;
-        }
+.about-globe {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+}
 
-        @media only screen and (min-width: $large) {
-            font-size: 18px;
-            width: 49%;
-            line-height: 1.6;
-        }
-    }
-
-    h2 {
-        width: 85%;
-        margin: 10px 0 10px 15%;
-        font-size: 12px;
-        font-weight: 500;
-        color: rgba(243,241,237,.6);
-        line-height: 1.9;
-        letter-spacing: 0.04em;
-
-        @media only screen and (min-width: $medium) {
-            width: 72%;
-            margin: 10px 10% 20px 22%;
-            font-size: 13px;
-            line-height: 2;
-        }
-
-        @media only screen and (min-width: $large) {
-            width: 60%;
-            margin: 10px 10% 30px 30%;
-            font-size: 14px;
-        }
-    }
-
-    h3 {
-        width: 80%;
-        margin: 10px 0 10px 20%;
-        font-size: 12px;
-        font-style: italic;
-        font-weight: 400;
-        color: rgba(232,229,231, 0.5);
-        line-height: 1.9;
-        letter-spacing: 0.04em;
-        text-indent: 5px;
-
-        @media only screen and (min-width: $medium) {
-            width: 50%;
-            margin: 15px 7.5% 10px 42.5%;
-            font-size: 13px;
-            text-indent: 15px;
-        }
-
-        @media only screen and (min-width: $large) {
-            width: 40%;
-            margin: 20px 7.5% 10px 52.5%;
-            font-size: 13px;
-            text-indent: 15px;
-        }
-    }
-
-    h4 {
-        text-align: right;
-        margin: 20px 0 40px;
-        font-size: 12px;
-        font-weight: 500;
-        color: rgb(228,225,221);
-        opacity: .7;
-
-        @media only screen and (min-width: $medium) {
-            margin: 30px 10% 30px 0;
-            font-size: 13px;
-        }
-
-        a {
-            text-decoration: none;
-            cursor: pointer;
-            color: rgb(232,229,231);
-            opacity: .8;
-
-            &:hover {
-                opacity: 1;
-                transition: opacity .5s ease;
-                text-decoration: underline;
-             }
-        }
-    }
-
-    h5 {
-        margin: 5px 0 50px 8%;
-        padding: 0;
-        font-size: 13px;
-        font-weight: 500;
-        color: rgba(248,242,252,.6);
-        letter-spacing: 0.09em;
-
-        @media only screen and (min-width: $medium) {
-            margin: 10px 0 50px 8%;
-            font-size: 15px;
-        }
-    }
-
-    p {
-        font-size: 11px;
-        font-weight: 400;
-        color: rgba(248,251,245,.4);
-        letter-spacing: 0.09em;
-        margin: 20px 0 0 7.5%;
-        padding: 0;
-
-        @media only screen and (min-width: $medium) {
-            font-size: 12px;
-            margin: 20px 0 0 10%;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            opacity: .7;
-            transition: opacity .5s ease;
-            cursor: pointer;
-
-            &:hover {
-                opacity: .9;
-                transition: opacity .5s ease;
-            }
-        }
-    } 
+.about-sky {
+    width: 100%;
+    height: 300px;
 }
 
 .about-images {

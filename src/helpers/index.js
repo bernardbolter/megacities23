@@ -180,3 +180,18 @@ export const updateControlledPosition = (
 
   return [newX, newY];
 };
+
+export const decideWallSize = (width, selection) => {
+  if (width < 600) {
+    switch (selection) {
+      case 0:
+        return [width, width * 0.8];
+      case 1:
+        return [width, width * 0.8];
+      case 2:
+        return [width, width * 0.7];
+      default:
+        return [width, width * 0.8];
+    }
+  }
+};

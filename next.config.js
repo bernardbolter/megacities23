@@ -8,7 +8,7 @@ const nextConfig = {
     domains: ["thefilterman.de"],
   },
   i18n: {
-    locales: ["en", "de", "cn"],
+    locales: ["en", "de", "cn", "ua"],
     defaultLocale: "en",
   },
 };

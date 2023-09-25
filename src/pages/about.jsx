@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useWindowSize } from '../helpers/useWindowSize'
+import { motion, useScroll } from "framer-motion"
 
 import SwitchLang from '../components/SwitchLang'
 import Logo from "../components/Logo"
@@ -11,6 +12,7 @@ import Image from "next/image"
 const About = () => {
   const { t } = useTranslation()
   const size = useWindowSize()
+  const { scrollYProgress } = useScroll()
 
   return (
     <section className="about-container">
@@ -36,9 +38,33 @@ const About = () => {
       )}
 
       <div className="about-content">
-          <h1>{t('headline', { ns: 'about' })}</h1>
-          <div classname="about-line" />
-          <h2>{t('description', { ns: 'about' })}</h2>
+          <h1 className="about-headline">{t('headline', { ns: 'about' })}</h1>
+          <div className="about-overview">
+            <h2 className="about-overview-effect">{t('overviewEffect', { ns: 'about'})}</h2>
+            <h2 className="about-overview-text">{t('overviewEffectText', { ns: 'about' })}</h2>
+            <a 
+              href={t('wikiLink', { ns: 'about'})} 
+              alt="link to wikipedia"
+              className="about-wiki-link"
+            >{t('wikiLink', {ns: 'about'})}</a>
+            <div className="about-overview-image">
+              <Image
+                src="/images/aboutGlobe.png"
+                alt="the earth"
+                width={250}
+                height={250}
+                className="about-globe"
+              />
+              <Image
+                src="/images/aboutSky.jpg"
+                alt="the universe"
+                width={300}
+                height={75}
+                className="about-sky"
+              />
+            </div>
+          </div>
+          <div className="about-line" />
         <div className="about-video-container">
           <div className="about-text">
             <h1>{t('tageline', { ns: 'about' })}</h1>

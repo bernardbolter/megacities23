@@ -4,7 +4,7 @@ import Globe from '../svg/Globe'
 
 const NavMobile = ({ about, series, prints, contact }) => {
     const router = useRouter()
-    console.log(router)
+
     return (
         <div className="nav-mobile-container">
             <section className="nav-mobile" >
