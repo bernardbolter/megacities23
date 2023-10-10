@@ -26,6 +26,7 @@ import '@/styles/gallery-view.scss'
 import '@/styles/draggable-print.scss'
 import '@/styles/wall-view.scss'
 import '@/styles/print-summary.scss'
+import '@/styles/print-list.scss'
 
 import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
