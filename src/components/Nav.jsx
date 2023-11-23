@@ -18,7 +18,7 @@ const Nav = ({ about, series, prints, contact }) => {
             <section className={navOpen ? "navigation" : "navigation navigation-off"} >
                 <Link className="nav-link" href="/about">{about}</Link>
                 <Link className="nav-link" href="/series">{series}</Link>
-                <Link className="nav-link" href="/prints">{prints}</Link>
+                <Link className="nav-link" href="/prints-list">{prints}</Link>
                 <Link className="nav-link" href="/contact">{contact}</Link>
                 <Link className="link globe" href="/">
                     <Globe />
